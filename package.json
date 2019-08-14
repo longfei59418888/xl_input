@@ -1,0 +1,24 @@
+{
+  "name": "xl_input",
+  "version": "1.0.0",
+  "description": "自定义虚拟数字输入键盘和input",
+  "main": "src/index.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/longfei59418888/xl_input.git"
+  },
+  "author": "xiaolong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/longfei59418888/xl_input/issues"
+  },
+  "homepage": "https://github.com/longfei59418888/xl_input#readme",
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  }
+}
