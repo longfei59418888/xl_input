@@ -103,7 +103,7 @@ class Main extends React.Component {
     onEnter = (e) => {
         const {onEnter} = this.props
         this.onBlur(e)
-        onEnter(this.value)
+        if (onEnter) onEnter(this.value)
     }
     onKeyUp = (key, e) => {
         e.nativeEvent.stopImmediatePropagation();

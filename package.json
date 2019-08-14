@@ -1,6 +1,6 @@
 {
   "name": "xl_input",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "自定义虚拟数字输入键盘和input",
   "main": "src/index.min.js",
   "scripts": {
