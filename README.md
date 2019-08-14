@@ -1,5 +1,8 @@
 # title
 
+### 介绍
+#### 不是用 input ，来实现 input 移动端的虚拟键盘
+
 ###  安装
 ```js
     npm install xl_input
