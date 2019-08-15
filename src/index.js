@@ -19,7 +19,7 @@ class Main extends React.Component {
     }
 
     componentDidMount() {
-        const {onFocus, onBlur} = this
+        const {onFocus, onBlur, onPaste} = this
         let timeOut = false
         this.input.addEventListener('click', (e) => {
             e.preventDefault()
@@ -34,7 +34,9 @@ class Main extends React.Component {
             onFocus(e)
             this.showKeyBox()
             document.addEventListener('click', onBlur)
+            document.addEventListener('paste', onPaste)
         })
+
 
     }
 
@@ -45,6 +47,27 @@ class Main extends React.Component {
     get value() {
         const {value} = this.state
         return value
+    }
+
+    onPaste = (e) => {
+        const {onPaste} = this.props
+        let {value} = this.state
+        e.preventDefault()
+        e.stopPropagation()
+        if (!(e.clipboardData && e.clipboardData.items)) return;
+        const {items = []} = e.clipboardData
+        Object.keys(items).forEach(key => {
+            const item = items[key];
+            if (item.kind === 'string' && item.type === "text/plain") {
+                item.getAsString((str) => {
+                    if (onPaste) str = onPaste(str)
+                    value = value + str
+                    this.setState({
+                        value
+                    })
+                })
+            }
+        })
     }
 
     showKeyBox = () => {
@@ -139,6 +162,7 @@ class Main extends React.Component {
             focus: false
         })
         document.removeEventListener('click', this.onBlur)
+        document.removeEventListener('onPaste', this.onPaste)
         this.close()
         document.getElementsByTagName("html")[0].style.top = 0;
         if (onBlur) onBlur(this.value, target)
@@ -176,6 +200,7 @@ class Main extends React.Component {
                     {(value + '').length > 0 ? "" :
                         <span style={style} className='xl-common-input-placeholder'>{placeholder}</span>}
                 </div>
+                <input type="hidden"/>
             </div>
         )
     }
