@@ -162,7 +162,7 @@ class Main extends React.Component {
             focus: false
         })
         document.removeEventListener('click', this.onBlur)
-        document.removeEventListener('onPaste', this.onPaste)
+        document.removeEventListener('paste', this.onPaste)
         this.close()
         document.getElementsByTagName("html")[0].style.top = 0;
         if (onBlur) onBlur(this.value, target)
